@@ -75,7 +75,7 @@ Repeat E-Step and M-Step until log-likelihood converges.
 
 4️⃣ Log-Likelihood
 
-$$\mathcal{L}$$ = $$\sum_{i=1}^{n} \log\left(\sum_{k=1}^{K} \pi_k \, \mathcal{N}(x_i | \mu_k, \Sigma_k)\right)$$
+$$\mathcal{L}$$ = $$\sum_{i=1}^{n} \log\left(\sum_{k=1}^{K} \pi_k \$$, $$\mathcal{N}(x_i | \mu_k, \Sigma_k)\right)$$
 
 
 ---
@@ -110,7 +110,7 @@ b: average nearest-cluster distance
 ---
 
 ⚙️ Implementation Outline
-
+###
 for K in range(2, 8):
     means, covs, weights = initialize_params(X, K)
     for iteration in range(100):
@@ -119,7 +119,7 @@ for K in range(2, 8):
         log_likelihood = compute_log_likelihood(X, means, covs, weights, K)
         if convergence: break
     bic, aic, sil = compute_metrics(log_likelihood, K, X, resp)
-
+###
 
 ---
 
@@ -153,7 +153,7 @@ Each cluster is visualized with a Gaussian ellipse representing its covariance.
 
 ---
 
-📁 Project Structure
+### 📁 Project Structure
 
 📦 GMM_from_Scratch/
 ├── GMM_scratch.ipynb        # Full implementation
@@ -233,7 +233,7 @@ Setup.
 Data , . Mixture of  Gaussians parameterized by  with .
 Mixture density:
 
-$$p(x_i\mid\Theta)$$=$$\sum_{k=1}^K \pi_k\,\mathcal{N}(x_i\mid\mu_k,\Sigma_k)$$.
+$$p(x_i\mid\Theta)$$=$$\sum_{k=1}^K \pi_k\$$,$$\mathcal{N}(x_i\mid\mu_k,\Sigma_k)$$.
 
 We maximize log-likelihood .
 Because of the log-of-sum, use EM with latent one-hot  indicating component.
@@ -248,7 +248,7 @@ By Bayes rule:
 
 $$\gamma_{ik}$$
 $$\y_ik$$= $$\frac{\pi_k^{(t)}\,\mathcal{N}(x_i\mid\mu_k^{(t)},\Sigma_k^{(t)})}
-{\sum_{j=1}^K \pi_j^{(t)}\,\mathcal{N}(x_i\mid\mu_j^{(t)},\Sigma_j^{(t)})}$$.
+{\sum_{j=1}^K \pi_j^{(t)}\,\mathcal{N}(x_i\mid\mu_j^{(t)}$$,$$\Sigma_j^{(t)})}$$.
 
 Interpretation: soft assignment of  to component . These  are computed using the current parameters.
 
@@ -259,12 +259,12 @@ Interpretation: soft assignment of  to component . These  are computed using the
 
 Define the expected complete-data log-likelihood (the Q-function):
 
-$$Q(\Theta \mid \Theta^{(t)})$$ = $$\mathbb{E}_{Z\mid X,\Theta^{(t)}}[\log p(X,Z\mid\Theta)]$$
-= $$\sum_{i=1}^n\sum_{k=1}^K \gamma_{ik}\,\log\big(\pi_k\,\mathcal{N}(x_i\mid\mu_k,\Sigma_k)\big)$$.
+$$Q(\Theta \mid \Theta^{(t)})$$ = $$\mathbb{E}_{Z\mid X$$,$$\Theta^{(t)}}[\log p(X,Z\mid\Theta)]$$
+= $$\sum_{i=1}^n\sum_{k=1}^K \gamma_{ik}\$$,$$\log\big(\pi_k\$$,$$\mathcal{N}(x_i\mid\mu_k$$,$$\Sigma_k)\big)$$.
 
-Q=$$\sum_{k=1}^K \sum_{i=1}^n \gamma_{ik}\big(\log\pi_k + \log\mathcal{N}(x_i\mid\mu_k,\Sigma_k)\big)$$.
+Q=$$\sum_{k=1}^K \sum_{i=1}^n \gamma_{ik}\big(\log\pi_k$$ + $$\log\mathcal{N}(x_i\mid\mu_k$$,$$\Sigma_k)\big)$$.
 
-We maximize Q w.r.t. $$\pi_k$$,$$\mu_k$$,$$\Sigma_k$$ subject to .
+We maximize Q w.r.t. $$\pi_k$$, $$\mu_k$$, $$\Sigma_k$$ subject to .
 
 
 ---
@@ -284,7 +284,7 @@ $$\frac{\partial Q_{\mu_k}}{\partial\mu_k}$$
 
 $$\sum_{i=1}^n \gamma_{ik}(x_i-\mu_k)$$=0
 $$\quad\Rightarrow\quad$$
-$$\mu_k$$ = ##\frac{\sum_{i=1}^n \gamma_{ik} x_i}{\sum_{i=1}^n \gamma_{ik}}$$.
+$$\mu_k$$ = $$\frac{\sum_{i=1}^n \gamma_{ik} x_i}{\sum_{i=1}^n \gamma_{ik}}$$.
 
 $$\boxed{\mu_k$$ = $$\frac{1}{N_k}\sum_{i=1}^n \gamma_{ik} x_i.}$$
 
@@ -301,7 +301,7 @@ $$\frac{\partial Q_{\Sigma_k}}{\partial \Sigma_k^{-1}}$$ = $$\frac{1}{2}\sum_{i}
 
 $$\sum_{i}\gamma_{ik}(x_i-\mu_k)(x_i-\mu_k)^\top$$ = $$N_k \Sigma_k$$.
 
-$$\boxed{\Sigma_k$$ = $$\frac{1}{N_k}\sum_{i=1}^n \gamma_{ik} (x_i-\mu_k)(x_i-\mu_k)^\top.}$$
+$$\boxed{\Sigma_k = \frac{1}{N_k}\sum_{i=1}^n \gamma_{ik} (x_i-\mu_k)(x_i-\mu_k)^\top.}$$
 
 (Practically add small regularizer:  to avoid singularity.)
 
