@@ -75,7 +75,7 @@ Repeat E-Step and M-Step until log-likelihood converges.
 
 4️⃣ Log-Likelihood
 
-$$\mathcal{L}$$ = $$\sum_{i=1}^{n} \log\left(\sum_{k=1}^{K} \pi_k \$$, $$\mathcal{N}(x_i | \mu_k, \Sigma_k)\right)$$
+$$\mathcal{L} = \sum_{i=1}^{n} \log\left(\sum_{k=1}^{K} \pi_k \$$, $$\mathcal{N}(x_i | \mu_k, \Sigma_k)\right)$$
 
 
 ---
@@ -286,7 +286,7 @@ $$\sum_{i=1}^n \gamma_{ik}(x_i-\mu_k)$$=0
 $$\quad\Rightarrow\quad$$
 $$\mu_k$$ = $$\frac{\sum_{i=1}^n \gamma_{ik} x_i}{\sum_{i=1}^n \gamma_{ik}}$$.
 
-$$\boxed{\mu_k$$ = $$\frac{1}{N_k}\sum_{i=1}^n \gamma_{ik} x_i.}$$
+$$\boxed{\mu_k = \frac{1}{N_k}\sum_{i=1}^n \gamma_{ik} x_i.}$$
 
 
 ---
