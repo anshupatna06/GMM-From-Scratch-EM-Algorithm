@@ -259,12 +259,12 @@ Interpretation: soft assignment of  to component . These  are computed using the
 
 Define the expected complete-data log-likelihood (the Q-function):
 
-$$Q(\Theta \mid \Theta^{(t)})$$ = $$\mathbb{E}_{Z\mid X,\Theta^{(t)}}[\log p(X,Z\mid\Theta)]
-= \sum_{i=1}^n\sum_{k=1}^K \gamma_{ik}\,\log\big(\pi_k\,\mathcal{N}(x_i\mid\mu_k,\Sigma_k)\big)$$.
+$$Q(\Theta \mid \Theta^{(t)})$$ = $$\mathbb{E}_{Z\mid X,\Theta^{(t)}}[\log p(X,Z\mid\Theta)]$$
+= $$\sum_{i=1}^n\sum_{k=1}^K \gamma_{ik}\,\log\big(\pi_k\,\mathcal{N}(x_i\mid\mu_k,\Sigma_k)\big)$$.
 
-Q=$$\sum_{k=1}^K \sum_{i=1}^n \gamma_{ik}\big(\log\pi_k$$ + $$\log\mathcal{N}(x_i\mid\mu_k,\Sigma_k)\big)$$.
+Q=$$\sum_{k=1}^K \sum_{i=1}^n \gamma_{ik}\big(\log\pi_k)$$ + $$\log\mathcal{N}(x_i\mid\mu_k,\Sigma_k)\big)$$.
 
-We maximize Q w.r.t. $$\pi_k$$, $$\mu_k$$, $$\Sigma_k$$ subject to $$\Sigma_k{\pi_k}=1.
+We maximize Q w.r.t. $$\pi_k$$, $$\mu_k$$, $$\Sigma_k$$ subject to $$\Sigma_k{\pi_k}$$=1.
 
 
 ---
