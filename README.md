@@ -241,7 +241,7 @@ Because of the log-of-sum, use EM with latent one-hot  indicating component.
 
 ---
 
-1. E-step — responsibilities (posterior probabilities)
+(1) E-step — responsibilities (posterior probabilities)
 
 Define the posterior responsibility .
 By Bayes rule:
@@ -255,17 +255,25 @@ Interpretation: soft assignment of  to component . These  are computed using the
 
 ---
 
-2. M-step — maximize expected complete-data log-likelihood
+(2)M-Step: Update Parameters
 
-Define the expected complete-data log-likelihood (the Q-function):
+We re-estimate parameters by maximizing the expected complete log-likelihood with respect to :
 
-$$Q(\Theta \mid \Theta^{(t)})$$ = $$(\mathbb{E}_{Z\mid X,\Theta^{(t)}}[\log p(X,Z\mid\Theta)])$$
-= $$(\sum_{i=1}^n\sum_{k=1}^K \gamma_{ik}\,\log\big(\pi_k\,\mathcal{N}(x_i\mid\mu_k,\Sigma_k)\big))$$.
+$$Q(\Theta, \Theta^{(t)})$$ = $$\sum_{i=1}^{n} \sum_{k=1}^{K} \gamma_{ik} \log \left( \pi_k \, \mathcal{N}(x_i | \mu_k, \Sigma_k) \right)$$
 
-Q=$$(\sum_{k=1}^K \sum_{i=1}^n \gamma_{ik}\big(\log\pi_k))$$ + $$\log\mathcal{N}(x_i\mid\mu_k,\Sigma_k)\big)$$.
+1. Update Cluster Weights:
 
-We maximize Q w.r.t. $$\pi_k$$, $$\mu_k$$, $$\Sigma_k$$ subject to $$\Sigma_k{\pi_k}$$=1.
+$$\pi_k^{(t+1)}$$ = $$\frac{N_k}{n}$$
 
+$$\N_k$$ = $$\sum_{i=1}^{n} \gamma_{ik}$$
+
+2. Update Cluster Means:
+
+$$\mu_k^{(t+1)}$$ = $$\frac{1}{N_k} \sum_{i=1}^{n} \gamma_{ik} x_i$$
+
+3. Update Covariance Matrices:
+
+$$\Sigma_k^{(t+1)}$$ = $$\frac{1}{N_k} \sum_{i=1}^{n} \gamma_{ik} (x_i - \mu_k^{(t+1)})(x_i - \mu_k^{(t+1)})^T$$
 
 ---
 
