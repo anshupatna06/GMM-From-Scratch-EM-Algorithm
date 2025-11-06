@@ -228,6 +228,7 @@ Soft clustering of user behaviors
 2. Compare results with K-Means and Hierarchical Clustering
 
    🔢 Mathematical Appendix — Derivation of EM updates for GMM
+[These derivations are included for learning and documentation purposes. I’m currently deepening my understanding of the mathematical proofs and optimization concepts behind these algorithms while focusing on practical implementation, intuition, and visualization. The math section serves as a foundation for future mastery as I continue advancing in machine learning and statistical theory.]
 
 Setup.
 Data , . Mixture of  Gaussians parameterized by  with .
