@@ -257,7 +257,7 @@ Interpretation: soft assignment of  to component . These  are computed using the
 
 (2)M-Step: Update Parameters
 
-We re-estimate parameters by maximizing the expected complete log-likelihood with respect to :
+We re-estimate parameters by maximizing the expected complete log-likelihood with respect to $$\Theta$$:
 
 $$Q(\Theta, \Theta^{(t)})$$ = $$\sum_{i=1}^{n} \sum_{k=1}^{K} \gamma_{ik} \log \left( \pi_k \, \mathcal{N}(x_i | \mu_k, \Sigma_k) \right)$$
 
@@ -374,4 +374,3 @@ Convergence criterion: use change in log-likelihood or relative parameter change
 Model selection: use BIC/AIC and silhouette to choose .
 
 
-4. Extend to Variational Bayesian GMM (VBGMM) for adaptive cluster learning
