@@ -259,10 +259,10 @@ Interpretation: soft assignment of  to component . These  are computed using the
 
 Define the expected complete-data log-likelihood (the Q-function):
 
-$$Q(\Theta \mid \Theta^{(t)})$$ = $$\mathbb{E}_{Z\mid X, \Theta^{(t)}}[\log p(X,Z\mid\Theta)]$$
+$$Q(\Theta \mid \Theta^{(t)})$$ = $$\mathbb{E}_{Z\mid X,\Theta^{(t)}}[\log p(X,Z\mid\Theta)]$$
 = $$\sum_{i=1}^n\sum_{k=1}^K \gamma_{ik}\,\log\big(\pi_k\,\mathcal{N}(x_i\mid\mu_k, \Sigma_k)\big)$$.
 
-Q=$$\sum_{k=1}^K \sum_{i=1}^n \gamma_{ik}\big(\log\pi_k + \log\mathcal{N}(x_i\mid\mu_k$$, $$\Sigma_k)\big)$$.
+Q=$$\sum_{k=1}^K \sum_{i=1}^n \gamma_{ik}\big(\log\pi_k + \log\mathcal{N}(x_i\mid\mu_k,\Sigma_k)\big)$$.
 
 We maximize Q w.r.t. $$\pi_k$$, $$\mu_k$$, $$\Sigma_k$$ subject to .
 
@@ -276,10 +276,10 @@ Keep  fixed and maximize w.r.t. . Use the Gaussian log-density:
 $$\log\mathcal{N}(x_i\mid\mu_k,\Sigma_k)$$
 = $$-\frac{d}{2}\log(2\pi)-\frac{1}{2}\log|\Sigma_k| -\frac{1}{2}(x_i-\mu_k)^\top\Sigma_k^{-1}(x_i-\mu_k)$$.
 
-$$Q_{\mu_k}$$ = -$$\frac{1}{2}\sum_{i=1}^n \gamma_{ik}(x_i-\mu_k)^\top\Sigma_k^{-1}(x_i-\mu_k)$$.
+$$Q_{\mu_k}$$ = $$-\frac{1}{2}\sum_{i=1}^n \gamma_{ik}(x_i-\mu_k)^\top\Sigma_k^{-1}(x_i-\mu_k)$$.
 
 $$\frac{\partial Q_{\mu_k}}{\partial\mu_k}$$
-= -$$\frac{1}{2}\sum_{i=1}^n \gamma_{ik}\big(-2\Sigma_k^{-1}(x_i-\mu_k)\big)$$
+= $$-\frac{1}{2}\sum_{i=1}^n \gamma_{ik}\big(-2\Sigma_k^{-1}(x_i-\mu_k)\big)$$
 = $$\Sigma_k^{-1}\sum_{i=1}^n \gamma_{ik}(x_i-\mu_k)$$=0.
 
 $$\sum_{i=1}^n \gamma_{ik}(x_i-\mu_k)$$=0
@@ -295,7 +295,7 @@ $$\boxed{\mu_k = \frac{1}{N_k}\sum_{i=1}^n \gamma_{ik} x_i.}$$
 
 Maximize  Q w.r.t. $$\sigma_k$$. Collect terms depending on :
 
-$$Q_{\Sigma_k}$$ = -$$\frac{1}{2}\sum_{i=1}^n \gamma_{ik}\Big(\log|\Sigma_k| + (x_i-\mu_k)^\top\Sigma_k^{-1}(x_i-\mu_k)\Big)$$.
+$$Q_{\Sigma_k}$$ = $$-\frac{1}{2}\sum_{i=1}^n \gamma_{ik}\Big(\log|\Sigma_k| + (x_i-\mu_k)^\top\Sigma_k^{-1}(x_i-\mu_k)\Big)$$.
 
 $$\frac{\partial Q_{\Sigma_k}}{\partial \Sigma_k^{-1}}$$ = $$\frac{1}{2}\sum_{i}\gamma_{ik}\big((x_i-\mu_k)(x_i-\mu_k)^\top - \Sigma_k\big)$$=0.
 
@@ -323,7 +323,7 @@ $$\pi_k$$ = $$\frac{N_k}{\lambda}$$.
 $$\sum_{k}\pi_k$$ = $$\frac{1}{\lambda}\sum_k N_k$$ = $4\frac{n}{\lambda}$$ = 1
 $$\quad\Rightarrow\quad \lambda$$ = n.
 
-$$\boxed{\pi_k$$ = $$\frac{N_k}{n}$$ = $$\frac{1}{n}\sum_{i=1}^n \gamma_{ik}.}$$
+$$\boxed{\pi_k = \frac{N_k}{n} = \frac{1}{n}\sum_{i=1}^n \gamma_{ik}.}$$
 
 
 ---
@@ -341,13 +341,13 @@ $$\mathcal{L}(\Theta)$$ = $$\sum_{i=1}^n \log\Big(\sum_{k=1}^K \pi_k\,\mathcal{N
 
 Let  and  from E-step.
 
-$$\boxed{\gamma_{ik}$$ = $$\frac{\pi_k\,\mathcal{N}(x_i\mid\mu_k,\Sigma_k)}{\sum_{j=1}^K \pi_j\,\mathcal{N}(x_i\mid\mu_j,\Sigma_j)}}\quad\text{(E-step)}$$
+$$\boxed{\gamma_{ik} = \frac{\pi_k\,\mathcal{N}(x_i\mid\mu_k,\Sigma_k)}{\sum_{j=1}^K \pi_j\,\mathcal{N}(x_i\mid\mu_j,\Sigma_j)}}\quad\text{(E-step)}$$
 
-$$\boxed{\mu_k $$= $$\frac{1}{N_k}\sum_{i=1}^n \gamma_{ik} x_i}$$
-$$\quad,\quad$$
+$$\boxed{\mu_k = \frac{1}{N_k}\sum_{i=1}^n \gamma_{ik} x_i}$$
+$$\quad$$, $$\quad$$
 $$\boxed{\Sigma_k = \frac{1}{N_k}\sum_{i=1}^n \gamma_{ik} (x_i-\mu_k)(x_i-\mu_k)^\top}$$
-$$\quad,\quad$$
-$$\boxed{\pi_k$$ = $$\frac{N_k}{n}}$$
+$$\quad$$, $$\quad$$
+$$\boxed{\pi_k = \frac{N_k}{n}}$$
 $$\quad\text{(M-step)}$$
 
 
